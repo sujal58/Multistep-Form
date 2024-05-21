@@ -1,27 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../assets/fonts/Ubuntu-Regular.woff2") format("woff2"),
-    url("../assets/fonts/Ubuntu-Regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: 700;
-  src: url("../assets/fonts/Ubuntu-Bold.woff2") format("woff2"),
-    url("../assets/fonts/Ubuntu-Bold.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  font-style: normal;
-  font-weight: 500; /* Adjust as needed for Ubuntu Medium */
-  src: url("../assets/fonts/Ubuntu-Medium.woff2") format("woff2"),
-    url("../assets/fonts/Ubuntu-Medium.woff") format("woff");
-}
