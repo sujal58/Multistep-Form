@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import FirstPage from './Components/FirstPage';
-import SecondPage from './Components/SecondPage'
-import Navbar from './Components/Navbar/Navbar';
+
+import FirstPage from './pages/FirstPage';
+import SecondPage from './pages/SecondPage';
+
 
 
 
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {/* <FirstPage/> */}
+      <FirstPage/>
       <SecondPage/>
       {/* <Navbar/> */}
     </>
