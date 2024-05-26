@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <FirstPage/>
+      {/* <FirstPage/> */}
       <SecondPage/>
       {/* <Navbar/> */}
     </>
