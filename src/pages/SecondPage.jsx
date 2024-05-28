@@ -1,14 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import arcade from '../assets/images/icon-arcade.svg'
 import advanced from '../assets/images/icon-advanced.svg'
 import pro from '../assets/images/icon-pro.svg'
 import Card from '../Components/card/Card'
+import useForm from '../context/formContext'
+// import { Formcontext } from '../context/formContext'
+// import { stateContext } from '../App'
 
 
 function SecondPage() {
         const [isChecked, setIsChecked] = useState(false);
         const [selectedCard, setSelectedCard] = useState(null);
+
+          // const {handleNext, handleBack} = useContext(Formcontext);
+          // const {handleState} = useContext(stateContext)
+
+
+          const {handleNext, handleBack} = useForm();
+        
 
         const handleToogle = () => {
             setIsChecked(!isChecked);
@@ -44,8 +54,8 @@ function SecondPage() {
                     </div>
 
                     <div className='absolute w-full bottom-0 hidden sm:flex justify-between'>
-                      <button className='text-slate-800 font-medium'>Go Back</button>
-                      <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md '>Next Step</button>
+                      <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+                      <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
                     </div>
                 </div>
                 
@@ -53,8 +63,8 @@ function SecondPage() {
         </div>
 
         <div className='sm:hidden absolute flex justify-between px-5 pr-4 items-center bottom-0 bg-white w-full h-12'>
-          <button className='text-slate-800 font-medium'>Go Back</button>
-          <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md '>Next Step</button>
+          <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+          <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
         </div> 
     </div>
   )

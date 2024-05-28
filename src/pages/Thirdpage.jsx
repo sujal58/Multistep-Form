@@ -1,11 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import Card from '../Components/Adons/Card'
 import arcade from '../assets/images/icon-arcade.svg'
 import advanced from '../assets/images/icon-advanced.svg'
 import pro from '../assets/images/icon-pro.svg'
+import useForm from '../context/formContext'
+// import { Formcontext } from '../context/formContext'
 
 function Thirdpage() {
+
+  //  const {handleNext, handleBack} = useContext(Formcontext);
+  const {handleNext, handleBack} = useForm();
+
+
   return (
     <div className="min-h-screen flex sm:justify-center items-center bg-gray-200 font-ubuntu">
         <div className="sm:static flex flex-col sm:flex-row sm:bg-white sm:h-full w-8/12 sm:w-9/12 lg:w-8/12 sm:p-4 rounded-xl">
@@ -27,16 +34,16 @@ function Thirdpage() {
                     </div>
 
                     <div className='absolute w-full bottom-0 hidden sm:flex justify-between md:px-14'>
-                      <button className='text-slate-800 font-medium'>Go Back</button>
-                      <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md '>Next Step</button>
+                      <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+                      <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
                     </div>
                 </div>
               </div>        
         </div>
 
         <div className='sm:hidden absolute flex justify-between px-5 pr-4 items-center bottom-0 bg-white w-full h-12'>
-          <button className='text-slate-800 font-medium'>Go Back</button>
-          <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md '>Next Step</button>
+          <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+          <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
         </div> 
     </div>
   )
