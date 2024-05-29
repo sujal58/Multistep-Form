@@ -5,25 +5,12 @@ import advanced from '../assets/images/icon-advanced.svg'
 import pro from '../assets/images/icon-pro.svg'
 import Card from '../Components/card/Card'
 import useForm from '../context/formContext'
-// import { Formcontext } from '../context/formContext'
-// import { stateContext } from '../App'
-
 
 function SecondPage() {
-        const [isChecked, setIsChecked] = useState(false);
-        const [selectedCard, setSelectedCard] = useState(null);
-
-          // const {handleNext, handleBack} = useContext(Formcontext);
-          // const {handleState} = useContext(stateContext)
-
-
-          const {handleNext, handleBack} = useForm();
         
+        const [selectedCard, setSelectedCard] = useState(null);
+          const {handleNext, handleBack, isChecked, handleToogle} = useForm();
 
-        const handleToogle = () => {
-            setIsChecked(!isChecked);
-            
-        }
 
   return (
     <div className="min-h-screen flex sm:justify-center items-center bg-gray-200 font-ubuntu">
@@ -38,7 +25,7 @@ function SecondPage() {
                     
                     <div className="details flex flex-col gap-3 sm:gap-5">
                           <div className='flex flex-col sm:flex-row gap-2 md:gap-5 justify-around'>
-                              <Card title={"Arcade"} img={arcade} price = {isChecked ? 90 : 9} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=> setSelectedCard(1)} />
+                              <Card title={"Arcade"} img={arcade} price = {isChecked ? 90 : 9} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=>setSelectedCard(1)}/>
                               <Card title={"Advanced"} img={advanced} price = {isChecked ? 120 : 12} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> setSelectedCard(2)}/>
                               <Card title={"Pro"} img={pro} price = {isChecked ? 150 : 15} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> setSelectedCard(3)}/>
                           </div>
@@ -50,12 +37,19 @@ function SecondPage() {
                                   <label htmlFor="check" className='absolute h-5 w-5 top-1 left-1 bg-white cursor-pointer peer-checked:left-6 rounded-xl'></label>
                               </div>
                                   <label htmlFor="check" className={`text-sm peer-checked:font-bold peer-checked:text-red-500 ${isChecked ? "font-bold" : "font-normal"}`}>Yearly</label>
-                          </div>      
+                          </div>    
+
                     </div>
 
-                    <div className='absolute w-full bottom-0 hidden sm:flex justify-between'>
+                    
+                          {/* <nextPrevbtn/>   */}
+                    {/* <div className='absolute w-full bottom-0 hidden sm:flex justify-between'>
                       <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
                       <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
+                    </div> */}
+                    <div className='absolute bottom-0 hidden sm:flex w-11/12 '>
+                      <button className='absolute left-0 bottom-1 text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+                      <button className='absolute text-white right-0 bottom-1 bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
                     </div>
                 </div>
                 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 function Card({title, img, price,offer, isSelected, onSelect}) {
+
+
     
 
   return (

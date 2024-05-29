@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Navbar from '../Components/Navbar/Navbar';
   import useForm from '../context/formContext';
   // import { stateContext } from '../App';
@@ -7,7 +7,11 @@ import Navbar from '../Components/Navbar/Navbar';
 const FirstPage = () => {
   // const {handleNext, handleBack} = useContext(Formcontext);
   // const {handleState} = useContext(stateContext)
-  const {handleNext} = useForm();
+  const {handleNext, currentData, handleCurrentData} = useForm();
+
+  const[name, setName] = useState("");
+  const[email, setEmail] = useState("");
+  const[phone, setPhone] = useState("");
 
   return (
     <>
@@ -23,22 +27,26 @@ const FirstPage = () => {
                   <div className="details flex flex-col gap-2 sm:gap-5">
                     <div className='personName gap-1'>
                       <h2 className='text-blue-900'>Name</h2>
-                      <input type="text" onChange={(e)=> setCurrentData({...currentData, "Name" : e.target.value})} className='border pl-2 border-solid border-gray-500 rounded-md text-md sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.Stephen King'/>
+                      <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Name" : e.target.value})} value={currentData.Name} className='border pl-2 border-solid border-gray-500 rounded-md text-md sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.Stephen King'/>
                     </div>
                     
                     <div className='personEmail'>
                       <h2 className='text-blue-900'>Email Address</h2>
-                      <input type="email" onChange={(e)=> setCurrentData({...currentData, "email" : e.target.value})} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.stephenKing@lorem.com'/>
+                      <input type="email" onChange={(e)=> handleCurrentData({...currentData, "email" : e.target.value})} value={currentData.email} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.stephenKing@lorem.com'/>
                     </div>
 
                     <div className='personPhone'>
                      <h2 className='text-blue-900'>Phone Number</h2>
-                      <input type="text" onChange={(e)=> setCurrentData({...currentData, "Phone" : e.target.value})} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.+1 234 567 890'/>
+                      <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Phone" : e.target.value})} value={currentData.Phone} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.+1 234 567 890'/>
                     </div>
                   </div>
-                  <div className='absolute  bottom-0 right-0 submitBtn sm:flex justify-end hidden sm:mt-5'>
+                  {/* <div className='absolute  bottom-0 right-0 submitBtn sm:flex justify-end hidden sm:mt-5'>
                       <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
-                    </div>
+                    </div> */}
+
+                    <div className='absolute bottom-0 hidden sm:flex w-11/12 '>
+                      <button className='absolute text-white right-0 bottom-1 bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
+                  </div>
                 </div>
               </div>    
         </div> 
@@ -46,6 +54,7 @@ const FirstPage = () => {
         <div className='sm:hidden absolute flex justify-end pr-4 items-center bottom-0 bg-white w-full h-14'>
           <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
       </div> 
+      
     
     </div>
     

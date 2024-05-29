@@ -8,20 +8,14 @@ import { FormProvider } from './context/formContext';
 
 // export const stateContext = createContext()
 function App() {
-  //   const [currentState, setCurrentState] = useState(1);
-
-  //   const handleState = () => {
-  //     setCurrentState(prevState => prevState + 1)
-  //   }
-
-
   
-  // const {currentstate} = useContext(Formcontext);
-  // console.log(currentstate);
 
   const[currentState, setCurrentState] = useState(1);
+  const [isChecked, setIsChecked] = useState(false);
+  const [currentData, setCurrentData] = useState([])
 
   const handleNext = () => {
+    console.log(currentData);
     setCurrentState(currentState => currentState+1);
   }
 
@@ -29,12 +23,20 @@ function App() {
     setCurrentState(currentState => currentState - 1);
   }
 
+  const handleToogle = () => {
+        setIsChecked(!isChecked);    
+      }
+
+    const  handleCurrentData = (newdata) => {
+          setCurrentData(newdata) 
+      }
+
 
   return (
     
     <>
     {/* <stateContext.Provider value={{currentState, handleState}}> */}
-    <FormProvider value={{currentState, handleBack, handleNext}}>
+    <FormProvider value={{currentState, handleBack, handleNext, isChecked, handleToogle, currentData, handleCurrentData}}>
       {currentState === 1 && <FirstPage/> }
       {currentState === 2 ? <SecondPage/> : null}
       {currentState === 3 ? <Thirdpage/> : null}
