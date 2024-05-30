@@ -1,11 +1,8 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import Card from '../Components/Adons/Card'
-import arcade from '../assets/images/icon-arcade.svg'
-import advanced from '../assets/images/icon-advanced.svg'
-import pro from '../assets/images/icon-pro.svg'
 import useForm from '../context/formContext'
-// import { Formcontext } from '../context/formContext'
+
 
 function Thirdpage() {
 

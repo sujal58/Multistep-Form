@@ -1,9 +1,14 @@
 import React from 'react'
+import useForm from '../../context/formContext'
 
 function Card({title, description, price}) {
 
+    const{handleCurrentData, currentData} = useForm();
+
   const handleAdon = (title, price) => {
-    console.log(price);
+    
+    handleCurrentData({ ...currentData, "Adons":[{"title": title, "price": price}]  });
+    
   }
   return (
     <div className='relative flex items-center gap-5 pl-4 h-20 w-11/12  border-2 rounded-xl'>
@@ -17,4 +22,4 @@ function Card({title, description, price}) {
   )
 }
 
-export default Card
+export default Card 

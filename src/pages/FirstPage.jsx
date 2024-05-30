@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Navbar from '../Components/Navbar/Navbar';
   import useForm from '../context/formContext';
   // import { stateContext } from '../App';
@@ -7,11 +7,9 @@ import Navbar from '../Components/Navbar/Navbar';
 const FirstPage = () => {
   // const {handleNext, handleBack} = useContext(Formcontext);
   // const {handleState} = useContext(stateContext)
-  const {handleNext, currentData, handleCurrentData} = useForm();
+  const {handleNext, currentData, handleCurrentData, handleError,errorBox} = useForm();
 
-  const[name, setName] = useState("");
-  const[email, setEmail] = useState("");
-  const[phone, setPhone] = useState("");
+  // useEffect(()=>{console.log(currentData.Name);}, [])
 
   return (
     <>
@@ -27,6 +25,7 @@ const FirstPage = () => {
                   <div className="details flex flex-col gap-2 sm:gap-5">
                     <div className='personName gap-1'>
                       <h2 className='text-blue-900'>Name</h2>
+                      <label>{errorBox?.name && errorBox.name}</label>
                       <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Name" : e.target.value})} value={currentData.Name} className='border pl-2 border-solid border-gray-500 rounded-md text-md sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.Stephen King'/>
                     </div>
                     
@@ -54,7 +53,6 @@ const FirstPage = () => {
         <div className='sm:hidden absolute flex justify-end pr-4 items-center bottom-0 bg-white w-full h-14'>
           <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
       </div> 
-      
     
     </div>
     

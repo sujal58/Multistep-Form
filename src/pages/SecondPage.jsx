@@ -3,7 +3,7 @@ import Navbar from '../Components/Navbar/Navbar'
 import arcade from '../assets/images/icon-arcade.svg'
 import advanced from '../assets/images/icon-advanced.svg'
 import pro from '../assets/images/icon-pro.svg'
-import Card from '../Components/card/Card'
+import Card from '../Components/PlanCard/Card'
 import useForm from '../context/formContext'
 
 function SecondPage() {
@@ -25,9 +25,9 @@ function SecondPage() {
                     
                     <div className="details flex flex-col gap-3 sm:gap-5">
                           <div className='flex flex-col sm:flex-row gap-2 md:gap-5 justify-around'>
-                              <Card title={"Arcade"} img={arcade} price = {isChecked ? 90 : 9} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=>setSelectedCard(1)}/>
-                              <Card title={"Advanced"} img={advanced} price = {isChecked ? 120 : 12} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> setSelectedCard(2)}/>
-                              <Card title={"Pro"} img={pro} price = {isChecked ? 150 : 15} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> setSelectedCard(3)}/>
+                              <Card title={"Arcade"} img={arcade} price = {isChecked ? "$90/yr" : "$9/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=>setSelectedCard(1)}/>
+                              <Card title={"Advanced"} img={advanced} price = {isChecked ? "$120/yr" : "$12/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> setSelectedCard(2)}/>
+                              <Card title={"Pro"} img={pro} price = {isChecked ? "$150/yr" : "$15/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> setSelectedCard(3)}/>
                           </div>
                           <div className='sm:w-full flex justify-center gap-4 items-center bg-gray-100 h-10'>
                               <label htmlFor="" className={`text-sm ${isChecked ? "font-normal" : "font-bold"}`}>Monthly</label>

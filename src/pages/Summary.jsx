@@ -1,11 +1,21 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import useForm from '../context/formContext'
+import SecondPage from './SecondPage';
 
 
 function Summary() {
 
-  const {handleBack, handleSubmit} = useForm();
+  const {handleBack, handleSubmit, currentData, isChecked} = useForm();
+  const [planPrice, setPlanprice] = useState(null);
+  const [adonPrice, setAdonsprice] = useState(null);
+
+
+  useEffect(()=>{
+    setPlanprice(parseInt(currentData.plan.price.match(/\d+/)[0], 10));
+    setAdonsprice(parseInt(currentData.Adons.price.match(/\d+/)[0], 10));
+  }, [planPrice, adonPrice])
+
 
 
 
@@ -21,23 +31,28 @@ function Summary() {
                     </div>
                     
                     <div className="details flex flex-col gap-3 sm:gap-5">
-                          <div className='flex flex-col bg-gray-100 w-8/12 h-6/12'>
-                              <div>
+                          <div className='flex flex-col bg-gray-100 w-11/12 h-6/12 rounded-md'>
+                              <div className='flex justify-between p-4'>
+                                <div className='flex flex-col'>
+                                  <h2 className='font-medium text-lg text-sky-800'>{currentData.plan.title} ({isChecked ? "yearly" : "Monthly"})</h2>
+                                  <a href= {<SecondPage/>} className='text-sm underline'>change</a>
+                                </div>
                                 <div>
-
+                                  <p>{currentData.plan.price}</p>
                                 </div>
                               </div>
-                              {/* <div>for line</div> */}
-                              <div>
-                                <p></p>
+                              <div className='border border-gray-400 w-10/12 ml-auto mr-auto'></div>
+                              <div className='flex justify-between p-4'>
+                                <p>{currentData.Adons.title}</p>
+                                <p>{currentData.Adons.price}</p>
                               </div>
                           </div>   
+                          <div className='flex p-4 justify-between w-11/12'>
+                            <p>Total ({isChecked ? "per Year" : "per month "})</p>
+                            <p>+${planPrice+adonPrice}/{isChecked ? "yr" : "mo"}</p>
+                          </div>
                     </div>
 
-                    {/* <div className='absolute w-full bottom-0 hidden sm:flex justify-between md:px-14'>
-                      <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
-                      <button className=' text-white  h-8 w-20 text-sm rounded-md ' onClick={handleSubmit}>Confirm</button>
-                    </div> */}
                     <div className='absolute bottom-0 hidden sm:flex w-11/12 md:px-14'>
                       <button className='absolute left-0 bottom-1 text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
                       <button className='absolute text-white bg-purple-600 right-0 bottom-1 h-8 w-20 text-sm rounded-md ' onClick={handleSubmit}>Confirm</button>

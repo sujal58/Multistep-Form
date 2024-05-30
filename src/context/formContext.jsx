@@ -6,11 +6,13 @@ export const formContext = createContext({
   isChecked: false,
   handleToogle: () => {},
   handleCurrentData: () => {},
-  currentData : [{}],
+  currentData : {},
+  errorBox: [],
   prevData: [{}],
   handleBack: () => {},
   handleNext: () => {},
-  handleSubmit: () => {}
+  handleSubmit: () => {},
+  handleError: () => {}
 });
 
 export const FormProvider = formContext.Provider;
