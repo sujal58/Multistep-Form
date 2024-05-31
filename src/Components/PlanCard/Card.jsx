@@ -1,7 +1,7 @@
 import React from 'react'
 import useForm from '../../context/formContext';
 
-function Card({title, img, price,offer, isSelected, onSelect}) {
+function Card({title, img, price,offer, isSelected, onSelect, selectedCard}) {
 
     const{handleCurrentData, currentData} = useForm();
 
@@ -11,7 +11,7 @@ function Card({title, img, price,offer, isSelected, onSelect}) {
     }
 
   return (
-        <div className={`card-1 flex sm:flex-col gap-5 md:justify-between items-center sm:items-start p-2 h-14 w-11/12 sm:h-28 sm:w-24 xl:h-32 xl:w-32 border  rounded-md cursor-pointer ${isSelected ? "border-slate-800" : "border-gray-400"}`}
+        <div className={`card-1 flex sm:flex-col gap-5 md:justify-between items-center sm:items-start p-2 h-14 w-11/12 sm:h-28 sm:w-24 xl:h-32 xl:w-32 border  rounded-md cursor-pointer  ${isSelected ? "border-slate-800" : "border-gray-400"}`}
         onClick={()=> handlePlan(title, price, offer)}>
              <div className='inner-icon '>
                 <img src={img} alt="Arcade-icon" className='h-8' />

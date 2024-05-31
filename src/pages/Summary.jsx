@@ -8,12 +8,12 @@ function Summary() {
 
   const {handleBack, handleSubmit, currentData, isChecked} = useForm();
   const [planPrice, setPlanprice] = useState(null);
-  const [adonPrice, setAdonsprice] = useState(null);
+  const [adonPrice, setAdonsprice] = useState(0);
 
 
   useEffect(()=>{
     setPlanprice(parseInt(currentData.plan.price.match(/\d+/)[0], 10));
-    setAdonsprice(parseInt(currentData.Adons.price.match(/\d+/)[0], 10));
+    {currentData.Adons && setAdonsprice(parseInt(currentData.Adons[0].price.match(/\d+/)[0], 10))};
   }, [planPrice, adonPrice])
 
 
@@ -43,8 +43,8 @@ function Summary() {
                               </div>
                               <div className='border border-gray-400 w-10/12 ml-auto mr-auto'></div>
                               <div className='flex justify-between p-4'>
-                                <p>{currentData.Adons.title}</p>
-                                <p>{currentData.Adons.price}</p>
+                                <p>{currentData.Adons && currentData.Adons[0].title}</p>
+                                <p>{currentData.Adons && currentData.Adons[0].price}</p>
                               </div>
                           </div>   
                           <div className='flex p-4 justify-between w-11/12'>

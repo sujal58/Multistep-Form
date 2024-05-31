@@ -1,18 +1,20 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext } from "react";
 
 
 export const formContext = createContext({
   currentState: 1,
+  selectedCard: null,
   isChecked: false,
   handleToogle: () => {},
   handleCurrentData: () => {},
   currentData : {},
-  errorBox: [],
+  error: false,
   prevData: [{}],
   handleBack: () => {},
   handleNext: () => {},
   handleSubmit: () => {},
-  handleError: () => {}
+  handleError: () => {},
+  handleCard: () => {}
 });
 
 export const FormProvider = formContext.Provider;

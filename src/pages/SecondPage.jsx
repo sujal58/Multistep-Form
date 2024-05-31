@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState} from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import arcade from '../assets/images/icon-arcade.svg'
 import advanced from '../assets/images/icon-advanced.svg'
@@ -8,8 +8,8 @@ import useForm from '../context/formContext'
 
 function SecondPage() {
         
-        const [selectedCard, setSelectedCard] = useState(null);
-          const {handleNext, handleBack, isChecked, handleToogle} = useForm();
+        
+          const {handleNext, handleBack, isChecked, handleToogle, error, handleCard, selectedCard} = useForm();
 
 
   return (
@@ -24,10 +24,11 @@ function SecondPage() {
                     </div>
                     
                     <div className="details flex flex-col gap-3 sm:gap-5">
+                      <label className='text-red-500 text-center'>{error && "Please select at least one plan !"}</label>
                           <div className='flex flex-col sm:flex-row gap-2 md:gap-5 justify-around'>
-                              <Card title={"Arcade"} img={arcade} price = {isChecked ? "$90/yr" : "$9/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=>setSelectedCard(1)}/>
-                              <Card title={"Advanced"} img={advanced} price = {isChecked ? "$120/yr" : "$12/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> setSelectedCard(2)}/>
-                              <Card title={"Pro"} img={pro} price = {isChecked ? "$150/yr" : "$15/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> setSelectedCard(3)}/>
+                              <Card title={"Arcade"} img={arcade} price = {isChecked ? "$90/yr" : "$9/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} selectedCard = {selectedCard} onSelect = {()=>handleCard(1)}/>
+                              <Card title={"Advanced"} img={advanced} price = {isChecked ? "$120/yr" : "$12/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> handleCard(2)}/>
+                              <Card title={"Pro"} img={pro} price = {isChecked ? "$150/yr" : "$15/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> handleCard(3)}/>
                           </div>
                           <div className='sm:w-full flex justify-center gap-4 items-center bg-gray-100 h-10'>
                               <label htmlFor="" className={`text-sm ${isChecked ? "font-normal" : "font-bold"}`}>Monthly</label>
@@ -41,12 +42,6 @@ function SecondPage() {
 
                     </div>
 
-                    
-                          {/* <nextPrevbtn/>   */}
-                    {/* <div className='absolute w-full bottom-0 hidden sm:flex justify-between'>
-                      <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
-                      <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>
-                    </div> */}
                     <div className='absolute bottom-0 hidden sm:flex w-11/12 '>
                       <button className='absolute left-0 bottom-1 text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
                       <button className='absolute text-white right-0 bottom-1 bg-blue-900 h-8 w-20 text-sm rounded-md ' onClick={handleNext}>Next Step</button>

@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import useForm from '../../context/formContext'
 
 function Card({title, description, price}) {
+  // const id = useId();
+
+  const [adons, setAdons] = useState([])
 
     const{handleCurrentData, currentData} = useForm();
 
-  const handleAdon = (title, price) => {
-    
-    handleCurrentData({ ...currentData, "Adons":[{"title": title, "price": price}]  });
-    
-  }
+   useEffect(()=>{
+    handleCurrentData({...currentData, "Adons": adons})
+   },[adons])
+
+
+    const handleAdon = (title, price) => {
+         setAdons(prevAdons=> [...prevAdons, {"title": title, "price": price}])
+      }
+
+
   return (
+    
     <div className='relative flex items-center gap-5 pl-4 h-20 w-11/12  border-2 rounded-xl'>
         <input type="checkbox" id="add-ons" onClick={()=>handleAdon(title, price)}/>
         <div className='flex flex-col'>
@@ -21,5 +30,9 @@ function Card({title, description, price}) {
     </div>
   )
 }
+
+// setAdons(prevAdons=>{
+  //     //   return prevAdons.includes(title) ? prevAdons.filter((adons)=>  adons != title, price) : [...prevAdons, title, price]
+  //     // });
 
 export default Card 
