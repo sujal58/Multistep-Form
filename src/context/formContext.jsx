@@ -2,19 +2,23 @@ import { createContext, useContext } from "react";
 
 
 export const formContext = createContext({
-  currentState: 1,
+  currentState: null,
   selectedCard: null,
   isChecked: false,
   handleToogle: () => {},
   handleCurrentData: () => {},
-  currentData : {},
+  currentData : [],
   error: false,
-  prevData: [{}],
+  totalAdons: [],
+  prevData: [],
   handleBack: () => {},
   handleNext: () => {},
   handleSubmit: () => {},
   handleError: () => {},
-  handleCard: () => {}
+  handleCard: () => {},
+  handleCheckedAdons: ()=>{},
+  checkEmail: () => {},
+  checkPhone: () => {}
 });
 
 export const FormProvider = formContext.Provider;

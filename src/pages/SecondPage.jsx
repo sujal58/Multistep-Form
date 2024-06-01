@@ -23,10 +23,11 @@ function SecondPage() {
                       <p className=' text-sm text-gray-500'>You have the option of monthly or yearly biling.</p>
                     </div>
                     
+                    
                     <div className="details flex flex-col gap-3 sm:gap-5">
                       <label className='text-red-500 text-center'>{error && "Please select at least one plan !"}</label>
                           <div className='flex flex-col sm:flex-row gap-2 md:gap-5 justify-around'>
-                              <Card title={"Arcade"} img={arcade} price = {isChecked ? "$90/yr" : "$9/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} selectedCard = {selectedCard} onSelect = {()=>handleCard(1)}/>
+                              <Card title={"Arcade"} img={arcade} price = {isChecked ? "$90/yr" : "$9/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 1} onSelect = {()=>handleCard(1)}/>
                               <Card title={"Advanced"} img={advanced} price = {isChecked ? "$120/yr" : "$12/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 2} onSelect = {()=> handleCard(2)}/>
                               <Card title={"Pro"} img={pro} price = {isChecked ? "$150/yr" : "$15/mo"} offer = {isChecked ? "2 months free": null} isSelected = {selectedCard === 3} onSelect = {()=> handleCard(3)}/>
                           </div>

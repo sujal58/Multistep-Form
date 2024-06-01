@@ -7,7 +7,7 @@ import useForm from '../context/formContext'
 function Thirdpage() {
 
   
-  const {handleNext, handleBack, isChecked} = useForm();
+  const {handleNext, handleBack, isChecked, totalAdons} = useForm();
 
   return (
     <div className="min-h-screen flex sm:justify-center items-center bg-gray-200 font-ubuntu">
@@ -22,9 +22,9 @@ function Thirdpage() {
                     
                     <div className="details flex flex-col gap-3 sm:gap-5">
                           <div className='flex flex-col gap-2'>
-                              <Card title={"Online service"} description={"Access to multiplayer games."} price = {isChecked ? "+$10/yr": "+$1/yr"}/>
-                              <Card title={"Larger storage"} description={"Extra 1TB of cloud save"} price = {isChecked ? "+$20/yr": "+$2/yr"}/>
-                              <Card title={"Customizable profile"} description={"Custom theme on your profile"} price = {isChecked ? "+$20/yr": "+$2/yr"}/>
+                              <Card title={"Online service"} value = {0} description={"Access to multiplayer games."} checked = {totalAdons.includes(0)} price = {isChecked ? "+$10/yr": "+$1/mo"}/>
+                              <Card title={"Larger storage"}  value= {1} description={"Extra 1TB of cloud save"} checked = {totalAdons.includes(1)} price = {isChecked ? "+$20/yr": "+$2/mo"}/>
+                              <Card title={"Customizable profile"} value= {2} description={"Custom theme on your profile"} checked = {totalAdons.includes(2)} price = {isChecked ? "+$20/yr": "+$2/mo"}/>
 
                           </div>   
                     </div>

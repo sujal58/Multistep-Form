@@ -6,7 +6,9 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const FirstPage = () => {
   
-  const {handleNext, currentData, handleCurrentData, handleError,error} = useForm();
+  const {handleNext, currentData, handleCurrentData, handleError,error, checkEmail, checkPhone} = useForm();
+
+
 
 
   return (
@@ -25,19 +27,19 @@ const FirstPage = () => {
                       <h2 className='relative text-blue-900 text-sm md:text-md w-11/12'>Name
                       <label className='absolute text-red-500 top-0 right-0  text-xs md:text-md 2xl:text-xl'>{(error && currentData.Name === undefined) && "This field is required !"}</label>
                       </h2>
-                      <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Name" : e.target.value})} value={currentData.Name} className='border pl-2 border-solid border-gray-500 rounded-md text-md sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.Stephen King'/>
+                      <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Name" : e.target.value})} value={currentData.Name} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.Stephen King'/>
                     </div>
                     
                     <div className='personEmail'>
                       <h2 className='relative text-blue-900 text-sm md:text-md w-11/12'>Email Address
-                      <label className='absolute text-red-500 top-0 right-0 text-xs md:text-md 2xl:text-xl'>{(error && currentData.email === undefined) && "This field is required !"}</label>
+                      <label className='absolute text-red-500 top-0 right-0 text-xs md:text-md 2xl:text-xl'>{(error && currentData.email === undefined) ? "This field is required !" : (error && !checkEmail(currentData.email)) && "Email is Invalid !"}</label>
                       </h2>
                       <input type="email" onChange={(e)=> handleCurrentData({...currentData, "email" : e.target.value})} value={currentData.email} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.stephenKing@lorem.com'/>
                     </div>
 
                     <div className='relative personPhone'>
                      <h2 className='relative text-blue-900 text-sm md:text-md w-11/12'>Phone Number
-                      <label className='absolute text-red-500 top-0 right-0 text-xs md:text-md 2xl:text-xl'>{(error && currentData.Phone === undefined) && "This field is required !"}</label>
+                      <label className='absolute text-red-500 top-0 right-0 text-xs md:text-md 2xl:text-xl'>{(error && currentData.Phone === undefined) ? "This field is required !" : (error && !checkPhone(currentData.Phone)) && "Phone number is invalid"}</label>
                      </h2>
                       <input type="text" onChange={(e)=> handleCurrentData({...currentData, "Phone" : e.target.value})} value={currentData.Phone} className='border pl-2 border-solid border-gray-500 rounded-md text-sm sm:text-md w-11/12 h-8 sm:h-9' placeholder='e.g.+1 234 567 890'/>
                     </div>

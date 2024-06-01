@@ -1,7 +1,7 @@
 import React from 'react'
 import useForm from '../../context/formContext';
 
-function Card({title, img, price,offer, isSelected, onSelect, selectedCard}) {
+function Card({title, img, price,offer, isSelected, onSelect}) {
 
     const{handleCurrentData, currentData} = useForm();
 
