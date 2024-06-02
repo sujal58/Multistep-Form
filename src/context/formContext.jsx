@@ -18,7 +18,8 @@ export const formContext = createContext({
   handleCard: () => {},
   handleCheckedAdons: ()=>{},
   checkEmail: () => {},
-  checkPhone: () => {}
+  checkPhone: () => {},
+  handleChange: () => {}
 });
 
 export const FormProvider = formContext.Provider;

@@ -83,13 +83,17 @@ function App() {
         setThankYou(true);
       }
 
+      function handleChange(){
+        setCurrentState(2);
+      }
+
     
 
   return (
     
     <>
    
-    <FormProvider value={{currentState, handleBack, handleNext, isChecked, handleToogle, currentData, handleCurrentData, handleSubmit, prevData, error, selectedCard, handleCard, totalAdons, handleCheckedAdons, checkEmail, checkPhone}}>
+    <FormProvider value={{currentState, handleBack, handleNext, isChecked, handleToogle, currentData, handleCurrentData, handleSubmit, prevData, error, selectedCard, handleCard, totalAdons, handleCheckedAdons, checkEmail, checkPhone, handleChange}}>
       {currentState === 1 && <FirstPage/> }
       {currentState === 2 && <SecondPage/>}
       {currentState === 3 && <Thirdpage/>}

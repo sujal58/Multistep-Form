@@ -29,6 +29,8 @@ function Card({title, description, price, value, checked}) {
         return adons.some(value=> value.id === index) ? adons.filter((value)=> { 
                                      return value.id != index}) : [...adons, newAdon]
       });
+
+       handleCheckedAdons(value);
     }
 
       // setAdons(adons=>  [...adons, newAdon])

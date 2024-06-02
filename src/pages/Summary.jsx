@@ -8,7 +8,7 @@ import thankyouimg from "../assets/images/icon-thank-you.svg"
 
 function Summary({thankyou}) {
 
-  const {handleBack, handleSubmit, currentData, isChecked} = useForm();
+  const {handleBack, handleSubmit,handleChange, currentData, isChecked} = useForm();
   const [planPrice, setPlanprice] = useState(null);
   const [adonPrice, setAdonsprice] = useState(0);
 
@@ -40,7 +40,8 @@ function Summary({thankyou}) {
                               <div className='flex justify-between p-4'>
                                 <div className='flex flex-col'>
                                   <h2 className='font-medium text-lg text-sky-800'>{currentData.plan.title} ({isChecked ? "yearly" : "Monthly"})</h2>
-                                  <a href= {<SecondPage/>} className='text-sm underline'>change</a>
+                                  <input type="button" value="change" onClick={handleChange} className='text-sm underline border-none cursor-pointer text-left' />
+                                  {/* <a  className=''>change</a> */}
                                 </div>
                                 <div>
                                   <p>{currentData.plan.price}</p>
