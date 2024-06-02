@@ -4,7 +4,7 @@ import SecondPage from './pages/SecondPage';
 import Thirdpage from './pages/Thirdpage';
 import Summary from './pages/Summary';
 import { FormProvider } from './context/formContext';
-import FinalPage from './pages/FinalPage';
+import "../src/App.css"
 
 
 function App() {

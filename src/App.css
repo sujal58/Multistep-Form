@@ -1,0 +1,7 @@
+.sidebarDesktop{
+    background-image: url("../src/assets/images/bg-sidebar-desktop.svg");
+}
+
+.sidebarMobile{
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+}
