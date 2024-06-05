@@ -7,7 +7,7 @@ function ListCard({state, step, info}) {
     const {currentState} = useForm();
   return (
     <div className='flex items-center text-white sm:gap-3 w-full'>
-        <div className={`h-7 w-7 flex justify-center items-center ${currentState == state ? "bg-blue-800" :"border border-white"} text-white rounded-3xl text-center`}>
+        <div className={`h-7 w-7 flex justify-center items-center ${currentState == state ? "bg-blue-200 text-black" :"border border-white text-white"} rounded-3xl text-center`}>
             {state}
         </div>
         <div className='flex flex-col flex-wrap'>

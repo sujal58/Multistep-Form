@@ -1,42 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import useForm from '../../context/formContext'
 
-function Card({title, description, price, value, checked}) {
+function Card({title, description, price, value}) {
 
-  const{handleCurrentData, currentData, handleCheckedAdons, totalAdons} = useForm();
-  
-    const [adons, setAdons] = useState([]);
-
-   useEffect(()=>{
-    if(adons.length > 0){
-      handleCurrentData({...currentData, Adons: adons});
-    }
-    console.log(adons);
-    
-   },[adons])
+  const{handleCheckedAdons, totalAdons} = useForm();
 
 
     const handleAdon = (title, price, index) => {
-      console.log(adons);
-
         const newAdon = {
           id: index,
           title,
           price
         }
 
-        setAdons(adons=>{
-        return adons.some(value=> value.id === index) ? adons.filter((value)=> { 
-                                     return value.id != index}) : [...adons, newAdon]
-      });
-
-       handleCheckedAdons(value);
+       handleCheckedAdons(value, newAdon, index);
     }
-
-      // setAdons(adons=>  [...adons, newAdon])
-      //    handleCheckedAdons(value);
-      // }
-
 
     return (
       

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import FirstPage from './pages/FirstPage';
 import SecondPage from './pages/SecondPage';
 import Thirdpage from './pages/Thirdpage';
@@ -11,12 +11,22 @@ function App() {
 
   const[currentState, setCurrentState] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
-  const [currentData, setCurrentData] = useState([])
+  const [currentData, setCurrentData] = useState(
+    { "Name":"",
+      "email":"",
+      "Phone": ""
+    }
+)
   const [prevData, setPrevData] = useState([])
+  const [adons, setAdons] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [error, setError] = useState(false);
   const [totalAdons, setTotalAdons] = useState([]);
   const [thankyou, setThankYou] =useState(false);
+
+  useEffect(()=>{
+    handleCurrentData({...currentData, "Adons": adons})
+  }, [adons])
 
   function checkEmail(email){
     
@@ -50,20 +60,22 @@ function App() {
     setSelectedCard(cardNo)
   }
 
-  const handleCheckedAdons = (inputs) => {
+  const handleCheckedAdons = (inputs, newAdons, index) => {
+     setAdons(adons=>{
+        return adons.some(value=> value.id === index) ? adons.filter((value)=> { 
+                                     return value.id != index}) : [...adons, newAdons]
+      });
     setTotalAdons(prevAdons => {return prevAdons.includes(inputs) ? prevAdons.filter((value)=> value != inputs): [...prevAdons, inputs]});
   }
 
   const handleNext = () => {
     if(validateField(currentData)){
-      console.log(currentData);
       setError(false)
       setCurrentState(currentState => currentState+1);
     }else{
       setError(true)
     } 
-
-    }
+  }
 
   const handleBack = () => {       
     setCurrentState(currentState => currentState - 1);
@@ -93,7 +105,7 @@ function App() {
     
     <>
    
-    <FormProvider value={{currentState, handleBack, handleNext, isChecked, handleToogle, currentData, handleCurrentData, handleSubmit, prevData, error, selectedCard, handleCard, totalAdons, handleCheckedAdons, checkEmail, checkPhone, handleChange}}>
+    <FormProvider value={{currentState, handleBack, handleNext, isChecked, handleToogle, currentData, handleCurrentData, handleSubmit, prevData, error, selectedCard, handleCard,adons, totalAdons, handleCheckedAdons, checkEmail, checkPhone, handleChange}}>
       {currentState === 1 && <FirstPage/> }
       {currentState === 2 && <SecondPage/>}
       {currentState === 3 && <Thirdpage/>}

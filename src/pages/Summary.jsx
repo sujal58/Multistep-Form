@@ -1,22 +1,29 @@
 import React, {useContext, useEffect, useState} from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import useForm from '../context/formContext'
-import SecondPage from './SecondPage';
 import thankyouimg from "../assets/images/icon-thank-you.svg"
 
 
 
 function Summary({thankyou}) {
 
-  const {handleBack, handleSubmit,handleChange, currentData, isChecked} = useForm();
+  const {handleBack, handleSubmit,handleChange, currentData, isChecked, adons} = useForm();
   const [planPrice, setPlanprice] = useState(null);
-  const [adonPrice, setAdonsprice] = useState(0);
+  const [adonPrice, setAdonsprice] = useState([]);
 
 
   useEffect(()=>{
     setPlanprice(parseInt(currentData.plan.price.match(/\d+/)[0], 10));
-    {currentData.Adons && setAdonsprice(parseInt(currentData.Adons[0].price.match(/\d+/)[0], 10))};
-  }, [planPrice, adonPrice])
+    if (currentData.Adons) {
+      const adonPrices = currentData.Adons.map(value => {
+      const price = parseInt(value.price.match(/\d+/)[0], 10);
+      return price;
+  });
+  
+  // Update add-on prices state
+  setAdonsprice(adonPrices);
+}
+}, [])
 
 
 
@@ -28,6 +35,7 @@ function Summary({thankyou}) {
               <Navbar/>
              {!thankyou 
              ? (
+              <>
               <div className="absolute items-center top-20 sm:static flex flex-col w-full sm:flex-1">
                 <div className="relative bg-white py-5 sm:py-8 px-3 rounded-xl w-11/12 sm:h-full p-2 sm:p-2 md:p-2 md:ml-4 xl:ml-8 md:mt-5 flex flex-col gap-3 md:gap-6">
                     <div className="header flex flex-col">
@@ -35,7 +43,7 @@ function Summary({thankyou}) {
                       <p className=' text-sm text-gray-500'>Double-check everything looks OK before confirming.</p>
                     </div>
                     
-                    <div className="details flex flex-col gap-3 sm:gap-5">
+                    <div className="details flex flex-col gap-3 sm:gap-4">
                           <div className='flex flex-col bg-gray-100 w-11/12 h-6/12 rounded-md'>
                               <div className='flex justify-between p-4'>
                                 <div className='flex flex-col'>
@@ -48,16 +56,20 @@ function Summary({thankyou}) {
                                 </div>
                               </div>
                               <div className='border border-gray-400 w-10/12 ml-auto mr-auto'></div>
-
-                              <div className='flex justify-between p-4'>
-
-                                <p>{currentData.Adons && currentData.Adons[0].title}</p>
-                                <p>{currentData.Adons && currentData.Adons[0].price}</p>
-                              </div>
+                                 {currentData.Adons && currentData.Adons.map((value, index)=>{
+                                  return (
+                                    <div className='flex justify-between p-4' key={index}>
+                                    <p>{value.title}</p>
+                                    <p>{value.price}</p>
+                                  </div>
+                                  )
+                                 })}
+                                
+                              
                           </div>   
                           <div className='flex p-4 justify-between w-11/12'>
                             <p>Total ({isChecked ? "per Year" : "per month "})</p>
-                            <p>+${planPrice+adonPrice}/{isChecked ? "yr" : "mo"}</p>
+                            <p>+${planPrice + adonPrice.reduce((prev, curr) => { return prev + curr}, 0)}/{isChecked ? "yr" : "mo"}</p>
                           </div>
                     </div>
 
@@ -68,6 +80,11 @@ function Summary({thankyou}) {
 
                 </div>
               </div> 
+              <div className='sm:hidden absolute flex justify-between px-5 pr-4 items-center bottom-0 bg-white w-full h-12'>
+                  <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
+                  <button className=' text-white bg-purple-600 h-8 w-20 text-sm rounded-md ' onClick={handleSubmit}>Confirm</button>
+              </div> 
+              </>
              )
              : (
               <div className="absolute items-center top-20 sm:static flex flex-col w-full sm:flex-1">
@@ -76,7 +93,7 @@ function Summary({thankyou}) {
                         <img src={thankyouimg} alt="Thank you image>" />
                         <div className="description flex flex-col justify-center items-center">
                             <h1 className='text-slate-800 font-bold text-2xl'>Thank you!</h1>
-                            <p className='text=gray-400'>Thanks for confirming your subscription! We hope you have <br />
+                            <p className='text=gray-400 text-center'>Thanks for confirming your subscription! We hope you have <br />
                                 fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com
                             </p>
                         </div>
@@ -88,12 +105,6 @@ function Summary({thankyou}) {
              
               
         </div>
-        
-
-        <div className='sm:hidden absolute flex justify-between px-5 pr-4 items-center bottom-0 bg-white w-full h-12'>
-          <button className='text-slate-800 font-medium' onClick={handleBack}>Go Back</button>
-          <button className=' text-white bg-purple-600 h-8 w-20 text-sm rounded-md ' onClick={handleSubmit}>Confirm</button>
-        </div> 
     </div>
   )
 }

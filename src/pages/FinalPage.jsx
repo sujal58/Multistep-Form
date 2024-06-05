@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import thankyouimg from "../assets/images/icon-thank-you.svg"
+import useForm from '../context/formContext'
 
 function FinalPage() {
+
   return (
     <div className="min-h-screen flex sm:justify-center items-center bg-gray-200 font-ubuntu">
         <div className="sm:static flex flex-col sm:flex-row sm:bg-white sm:h-full w-8/12 sm:w-9/12 lg:w-7/12 xl:w-7/12 sm:p-4 rounded-xl">
@@ -17,7 +19,6 @@ function FinalPage() {
                                 fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com
                             </p>
                         </div>
-                        
                     </div>
                 </div>
               </div>        

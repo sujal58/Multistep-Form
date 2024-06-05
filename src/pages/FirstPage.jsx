@@ -1,12 +1,12 @@
 import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
   import useForm from '../context/formContext';
-  // import { stateContext } from '../App';
+
 
 
 const FirstPage = () => {
   
-  const {handleNext, currentData, handleCurrentData, handleError,error, checkEmail, checkPhone} = useForm();
+  const {handleNext, currentData, handleCurrentData,error, checkEmail, checkPhone} = useForm();
 
 
 
@@ -57,10 +57,6 @@ const FirstPage = () => {
       </div> 
     
     </div>
-    
-    {/* <div className='submitBtn absolute bottom-6 right-8 bg-white sm:hidden'>
-          <button className=' text-white bg-blue-900 h-8 w-20 text-sm rounded-md '>Next Step</button>
-    </div> */}
     </>
   );
 };
