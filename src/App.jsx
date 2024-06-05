@@ -12,9 +12,9 @@ function App() {
   const[currentState, setCurrentState] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
   const [currentData, setCurrentData] = useState(
-    { "Name":"",
-      "email":"",
-      "Phone": ""
+    { "Name":undefined,
+      "email":undefined,
+      "Phone": undefined
     }
 )
   const [prevData, setPrevData] = useState([])
@@ -44,7 +44,6 @@ function App() {
       if(formData.Name && formData.email && formData.Phone && checkEmail(formData.email) && checkPhone(formData.Phone)){
         return true;
      }else{
-      console.log("object");
       return false;
      }
      
