@@ -30,18 +30,18 @@ To set up and run the project locally, follow these steps:
    npm run dev
    ```
 
-## Usage
+**Usage**
 
-    After installation, you can use the application by navigating through the form steps and filling out the required information.
+- After installation, you can use the application by navigating through the form steps and filling out the required information.
 
-**Step 1**: Enter basic user details.
-**Step 2**: Select a subscription plan.
-**Step 3**: Choose additional add-ons.
-**Step 4**: Review and confirm your selections.
-**Thank You Page:** Confirmation and summary of your subscription.
+- **Step 1**: Enter basic user details.
+- **Step 2**: Select a subscription plan.
+- **Step 3**: Choose additional add-ons.
+- **Step 4**: Review and confirm your selections.
+- **Thank You Page:** Confirmation and summary of your subscription.
 
 ## Technologies Used
 
-**React**: JavaScript library for building user interfaces.
-**Context API**: State management for React applications.
-**Tailwind CSS**: Utility-first CSS framework for styling.
+- **React**: JavaScript library for building user interfaces.
+- **Context API**: State management for React applications.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
